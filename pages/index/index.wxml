@@ -1,2 +1,4 @@
 <!--pages/index/index.wxml-->
-<text>pages/index/index.wxml</text>
+<camera class="camera" device-position="back" flash="off" binderror="onCameraError">
+  <canvas class="pose-canvas" canvas-id="pose"></canvas>
+</camera>

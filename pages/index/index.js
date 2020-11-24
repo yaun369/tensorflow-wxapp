@@ -1,4 +1,7 @@
 // pages/index/index.js
+const tf = require('@tensorflow/tfjs-core');
+const posenet = require('@tensorflow-models/posenet');
+const regeneratorRuntime = require('regenerator-runtime');
 Page({
 
   /**
@@ -14,12 +17,71 @@ Page({
   onLoad: function (options) {
 
   },
-
+  onCameraError(err) {
+    console.log('onCameraError>>', err);
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
-  onReady: function () {
+  onReady() {
+    const context = wx.createCameraContext();
+    this.poseCanvans = wx.createCanvasContext('pose', this);
+    this.loadPosenet();
+    let count = 0;
+    const listener = context.onCameraFrame((frame) => {
+      count++;
+      if (count === 12) {
+        if (this.net) {
+          this.drawPose(frame); // 绘制模型返回的点
+        }
+        count = 0;
+      }
+    });
+    listener.start();
+  },
 
+  /**
+   * 加载模型
+   */
+  async loadPosenet() {
+    this.net = await posenet.load({
+      architecture: 'MobileNetV1',
+      outputStride: 16,
+      inputResolution: {
+        width: 480,
+        height: 640
+      },
+      multiplier: 0.5,
+      modelUrl: 'https://star-1257061493.cos.ap-beijing.myqcloud.com/tensorflow/model-stride16.json'
+    });
+  },
+
+  /**
+   * 检测模型
+   * @param {图像数据} frame 
+   * @param {模型网络} net 
+   */
+  async detectPose(frame, net) {
+    const imgData = {
+      data: new Uint8Array(frame.data),
+      width: frame.width,
+      height: frame.height
+    };
+    const imgSlice = tf.tidy(() => {
+      const imgTenser = tf.browser.fromPixels(imgData, 4);
+      return imgTenser.slice([0, 0, 0], [-1, -1, 3]);
+    });
+    const pose = await net.estimateSinglePose(imgSlice, {
+      flipHorizontal: false
+    });
+    imgSlice.dispose();
+    return pose;
+  },
+
+  async drawPose(frame) {
+    let pose = await this.detectPose(frame, this.net); // 获取到模型预测的点
+    if (pose == null && this.poseCanvans == null) return;
+    console.log(pose)
   },
 
   /**

@@ -6,10 +6,12 @@
   "author": "yuanmengmeng <geekreading@163.com>",
   "license": "MIT",
   "dependencies": {
+    "@tensorflow-models/posenet": "^2.2.1",
+    "@tensorflow/tfjs-backend-cpu": "2.0.1",
+    "@tensorflow/tfjs-backend-webgl": "2.0.1",
     "@tensorflow/tfjs-converter": "^2.7.0",
     "@tensorflow/tfjs-core": "^2.7.0",
     "fetch-wechat": "^0.0.3",
-    "@tensorflow/tfjs-backend-webgl": "2.0.1",
-    "@tensorflow/tfjs-backend-cpu": "2.0.1"
+    "regenerator-runtime": "^0.13.7"
   }
 }
