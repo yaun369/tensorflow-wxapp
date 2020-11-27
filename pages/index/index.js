@@ -18,6 +18,11 @@ Page({
     }]
   },
 
+  handleClickItem(e) {
+    let { url } = e.currentTarget.dataset;
+    wx.navigateTo({ url });
+  },
+
   /**
    * 生命周期函数--监听页面加载
    */
@@ -71,6 +76,22 @@ Page({
    * 用户点击右上角分享
    */
   onShareAppMessage: function () {
-
+    return {
+      title: 'TensorFlow遇上小程序',
+      path: '/pages/index/index',
+      imageUrl: '/static/img/share-img.png'
+    }
+  },
+  onAddToFavorites() {
+    return {
+      title: 'TensorFlow遇上小程序',
+      imageUrl: '/static/img/app-avatar.png'
+    }
+  },
+  onShareTimeline() {
+    return {
+      title: 'TensorFlow遇上小程序',
+      imageUrl: '/static/img/app-avatar.png'
+    }
   }
 })

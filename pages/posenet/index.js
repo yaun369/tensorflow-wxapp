@@ -137,6 +137,10 @@ Page({
    * 用户点击右上角分享
    */
   onShareAppMessage: function () {
-
+    return {
+      title: 'TensorFlow遇上小程序',
+      path: '/pages/posenet/index',
+      imageUrl: '/static/img/share-img.png'
+    }
   }
 })

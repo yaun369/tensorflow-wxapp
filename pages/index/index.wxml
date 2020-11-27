@@ -13,7 +13,7 @@
       TensorFlow.js 是一个 JavaScript 库，用于在浏览器和 Node.js 上训练和部署机器学习模型。同样的，现在也可以在小程序里使用 TensorFlow 团队提供的插件，运行这些开箱即用的预训练模型。
     </text>
   </view>
-  <view class="models" wx:for="{{modelsList}}" wx:key="index">
+  <view class="models" wx:for="{{modelsList}}" wx:key="index" data-url="{{item.url}}" bindtap="handleClickItem">
     <view class="item-top">
       <image class="models-icon" src="{{item.logo}}" mode="widthFix"></image>
     </view>
