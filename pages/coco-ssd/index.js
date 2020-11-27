@@ -1,21 +1,11 @@
-// pages/index/index.js
+// pages/coco-ssd/index.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    modelsList: [{
-      url: '/pages/posenet/index',
-      logo: '/static/img/posenet.png',
-      title: '姿势估计',
-      desc: '实时估计人体姿势 (PoseNet)。'
-    }, {
-      url: '/pages/coco-ssd/index',
-      logo: '/static/img/coco-ssd.png',
-      title: '对象检测',
-      desc: '定位和识别单个图像中的多个对象 (Coco SSD)。'
-    }]
+
   },
 
   /**

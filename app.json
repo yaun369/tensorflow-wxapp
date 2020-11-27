@@ -1,13 +1,19 @@
 {
   "pages": [
-    "pages/index/index"
+    "pages/index/index",
+    "pages/posenet/index",
+    "pages/coco-ssd/index"
   ],
   "window": {
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#fff",
-    "navigationBarTitleText": "posenet",
+    "navigationBarTitleText": "TensorFlow",
     "navigationBarTextStyle": "black",
     "navigationStyle": "custom"
+  },
+  "usingComponents": {
+    "van-nav-bar": "@vant/weapp/nav-bar/index",
+    "van-icon": "@vant/weapp/icon/index"
   },
   "plugins": {
     "tfjsPlugin": {

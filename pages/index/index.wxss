@@ -1,10 +1,110 @@
 /* pages/index/index.wxss */
-.camera {
-  width: 100%;
-  height: 100vh;
+.share {
+  font-size: 24rpx;
+  font-weight: bold;
+  color: #ff9100;
 }
 
-.pose-canvas {
+.share-icon {
+  padding: 8rpx 8rpx 8rpx 0;
+  width: 40rpx;
+  width: 40rpx;
+}
+
+.tensorflow-logo {
+  width: 400rpx;
+  height: 70rpx;
+  padding-top: 10rpx;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.about {
+  margin: 40rpx auto;
+  width: 680rpx;
+}
+
+.title {
+  font-size: 40rpx;
+  font-weight: 700;
+  line-height: 2;
+  color: #425066;
+  padding-bottom: 24rpx;
+}
+
+.subtitle {
+  color: #5f6368;
+  font-size: 28rpx;
+  line-height: 1.6;
+}
+
+.models {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  width: 610rpx;
+  margin: 30rpx;
+  border-radius: 20rpx;
+  box-shadow: 0 0 36rpx rgba(0, 0, 0, 0.1);
+  transform: translate3d(0, 0, 0);
+}
+
+.item-top {
   width: 100%;
-  height: 100vh;
+  height: 300rpx;
+  /* border-bottom: solid 1px #dadada; */
+  border-radius: 20rpx 20rpx 0 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.models-icon {
+  width: 180rpx;
+  height: 180rpx;
+}
+
+.item-bottom {
+  display: flex;
+  flex-direction: column;
+  padding: 52rpx 60rpx;
+  background: linear-gradient(to right, #ff6f00, #ff9100);
+}
+
+.item-title {
+  font-size: 40rpx;
+  font-weight: 500;
+  color: #ffffff;
+  margin-bottom: 24rpx;
+}
+
+.item-desc {
+  color: #ffffff;
+  font-size: 28rpx;
+  line-height: 44rpx;
+  margin-bottom: 16rpx;
+}
+
+.footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20rpx 0 60rpx;
+}
+
+.vertical-line {
+  width: 1px;
+  height: 30rpx;
+  background: #5f6368;
+  margin: 0 10rpx;
+}
+
+.powered-by-tensorflow {
+  width: 140rpx;
+  height: 62rpx;
 }

@@ -1,1 +1,18 @@
 /**app.wxss**/
+/* 自定义按钮样式 */
+.customize-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  padding: 0;
+  background-color: rgba(0, 0, 0, 0);
+  line-height: inherit;
+  height: 50rpx;
+  border-radius: 0;
+  border: none;
+}
+
+.customize-btn::after {
+  display: none;
+}
