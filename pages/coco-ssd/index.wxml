@@ -1,2 +1,5 @@
-<!--pages/coco-ssd/index.wxml-->
-<text>pages/coco-ssd/index.wxml</text>
+<!-- pages/coco-ssd/index.wxml -->
+<app-nav />
+<camera class="camera" device-position="back" flash="off" frame-size="medium">
+  <canvas class="canvas" canvas-id="ssd"></canvas>
+</camera>

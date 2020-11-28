@@ -13,6 +13,7 @@
   },
   "usingComponents": {
     "van-nav-bar": "@vant/weapp/nav-bar/index",
+    "app-nav": "components/app-nav/index",
     "van-icon": "@vant/weapp/icon/index",
     "van-toast": "@vant/weapp/toast/index"
   },

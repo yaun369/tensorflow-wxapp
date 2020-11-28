@@ -16,7 +16,7 @@
   left: 40rpx;
   width: 670rpx;
   height: 100rpx;
-  background: #FE4A3B;
+  background: #ff6f00;
   border-radius: 12rpx;
   font-size: 32rpx;
   font-weight: 500;

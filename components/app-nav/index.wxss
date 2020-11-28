@@ -1,0 +1,6 @@
+/* components/app-van/index.wxss */
+.nav .van-nav-bar__text {
+  color: #ff9100;
+  font-style: 88rpx;
+  font-weight: bold;
+}

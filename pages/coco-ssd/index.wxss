@@ -1,1 +1,10 @@
 /* pages/coco-ssd/index.wxss */
+.camera {
+  width: 100%;
+  height: 100vh;
+}
+
+.pose-canvas {
+  width: 100%;
+  height: 100vh;
+}

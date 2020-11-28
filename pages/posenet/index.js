@@ -40,7 +40,7 @@ Page({
   },
 
   initClassifier() {
-    wx.showLoading();
+    wx.showLoading({ title: '模型正在加载...' });
     this.classifier = new Classifier({ width: appWidth, height: appHeight });
     this.classifier.load().then(() => {
       wx.hideLoading();

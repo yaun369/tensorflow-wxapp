@@ -1,0 +1,2 @@
+<!--components/app-van/index.wxml-->
+<van-nav-bar fixed border="{{frame}}" left-text="返回" custom-class="nav" custom-style="background:rgba(0, 0, 0, 0);" bind:click-left="handleToHome" />
