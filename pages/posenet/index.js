@@ -20,7 +20,9 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) { },
+  onLoad: function (options) {
+    // console.log(appWidth, appHeight);
+  },
   onCameraError(err) {
     console.log('onCameraError>>', err);
   },
@@ -28,12 +30,10 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady() {
-    setTimeout(() => {
-      this.ctx = wx.createCanvasContext('pose');
-    }, 500);
+    const context = wx.createCameraContext();
+    this.ctx = wx.createCanvasContext('pose', this);
     this.initClassifier();
-    const context = wx.createCameraContext(this);
-    const listener = context.onCameraFrame(frame => {
+    const listener = context.onCameraFrame((frame) => {
       this.executeClassify(frame);
     });
     listener.start();

@@ -23,8 +23,7 @@ App({
     try {
       let custom = wx.getMenuButtonBoundingClientRect();
       const res = wx.getSystemInfoSync();
-      let screenWidth = typeof res.screenWidth === 'number' ? res.screenWidth : 320;
-      this.globalData.appWidth = screenWidth - (custom.bottom + custom.top - res.statusBarHeight);
+      this.globalData.appWidth = typeof res.screenWidth === 'number' ? res.screenWidth : 320;
       this.globalData.appHeight = typeof res.screenHeight === 'number' ? res.screenHeight : 500;
       this.globalData.benchmarkLevel = typeof res.benchmarkLevel === 'number' ? res.benchmark : -1;
     } catch (e) {
@@ -33,7 +32,7 @@ App({
   },
   globalData: {
     appWidth: 320,
-    appHeight: 480,
+    appHeight: 500,
     benchmarkLevel: -1
   }
 })
