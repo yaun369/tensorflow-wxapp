@@ -1,4 +1,4 @@
-// pages/index/index.js
+// pages/posenet/index.js
 import Toast from '../../miniprogram_npm/@vant/weapp/toast/toast';
 import { Classifier } from './models';
 const { appWidth, appHeight, benchmarkLevel } = getApp().globalData;
@@ -115,9 +115,15 @@ Page({
    */
   onShareAppMessage: function () {
     return {
-      title: 'TensorFlow遇上小程序',
+      title: '微信小程序 × PoseNet',
       path: '/pages/posenet/index',
       imageUrl: '/static/img/share-img.png'
+    }
+  },
+  onAddToFavorites() {
+    return {
+      title: '微信小程序 × PoseNet',
+      imageUrl: '/static/img/app-avatar.png'
     }
   }
 })

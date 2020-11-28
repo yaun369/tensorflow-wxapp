@@ -61,6 +61,16 @@ Page({
    * 用户点击右上角分享
    */
   onShareAppMessage: function () {
-
+    return {
+      title: '微信小程序 × Coco SSD',
+      path: '/pages/coco-ssd/index',
+      imageUrl: '/static/img/share-img.png'
+    }
+  },
+  onAddToFavorites() {
+    return {
+      title: '微信小程序 × Coco SSD',
+      imageUrl: '/static/img/app-avatar.png'
+    }
   }
 })
