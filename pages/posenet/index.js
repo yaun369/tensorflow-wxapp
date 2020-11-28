@@ -1,32 +1,26 @@
 // pages/index/index.js
-const tf = require('@tensorflow/tfjs-core');
-const posenet = require('@tensorflow-models/posenet');
-const regeneratorRuntime = require('regenerator-runtime');
-import {
-  drawKeypoints,
-  drawSkeleton
-} from './utils';
+import Toast from '../../miniprogram_npm/@vant/weapp/toast/toast';
+import { Classifier } from './models';
+const { appWidth, appHeight, benchmarkLevel } = getApp().globalData;
 
 Page({
-
+  classifier: null,
+  ctx: null,
   /**
    * 页面的初始数据
    */
   data: {
-    devicePosition: 'front'
+    devicePosition: 'front',
+    predicting: false
   },
   handleSwitchCamera() {
     let devicePosition = this.data.devicePosition === 'front' ? 'back' : 'front';
-    this.setData({
-      devicePosition
-    });
+    this.setData({ devicePosition });
   },
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
-
-  },
+  onLoad: function (options) { },
   onCameraError(err) {
     console.log('onCameraError>>', err);
   },
@@ -34,68 +28,49 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady() {
-    const context = wx.createCameraContext();
-    this.poseCanvans = wx.createCanvasContext('pose', this);
-    this.loadPosenet();
-    let count = 0;
-    const listener = context.onCameraFrame((frame) => {
-      count++;
-      if (count === 4) {
-        if (this.net) {
-          this.drawPose(frame); // 绘制模型返回的点
-        }
-        count = 0;
-      }
+    setTimeout(() => {
+      this.ctx = wx.createCanvasContext('pose');
+    }, 500);
+    this.initClassifier();
+    const context = wx.createCameraContext(this);
+    const listener = context.onCameraFrame(frame => {
+      this.executeClassify(frame);
     });
     listener.start();
   },
 
-  /**
-   * 加载模型
-   */
-  async loadPosenet() {
-    this.net = await posenet.load({
-      architecture: 'MobileNetV1',
-      outputStride: 16,
-      inputResolution: 193,
-      multiplier: 0.5,
-      modelUrl: 'https://star-1257061493.cos.ap-beijing.myqcloud.com/tensorflow/model-stride16.json'
-    });
+  initClassifier() {
+    wx.showLoading();
+    this.classifier = new Classifier({ width: appWidth, height: appHeight });
+    this.classifier.load().then(() => {
+      wx.hideLoading();
+    }).catch(err => {
+      console.log('模型加载报错：', err);
+      Toast.loading({
+        message: '网络连接异常',
+        forbidClick: true,
+        loadingType: 'spinner',
+      });
+    })
   },
 
-  /**
-   * 检测模型
-   * @param {图像数据} frame 
-   * @param {模型网络} net 
-   */
-  async detectPose(frame, net) {
-    const imgData = {
-      data: new Uint8Array(frame.data),
-      width: frame.width,
-      height: frame.height
-    };
-    const imgSlice = tf.tidy(() => {
-      const imgTenser = tf.browser.fromPixels(imgData, 4);
-      return imgTenser.slice([0, 0, 0], [-1, -1, 3]);
-    });
-    const pose = await net.estimateSinglePose(imgSlice, {
-      flipHorizontal: false
-    });
-    imgSlice.dispose();
-    return pose;
-  },
-
-  async drawPose(frame) {
-    let pose = await this.detectPose(frame, this.net); // 获取到模型预测的点
-    if (pose == null && this.poseCanvans == null) return;
-    console.log(pose)
-    const minPoseConfidence = 0.2;
-    const minPartConfidence = 0.3;
-    if (pose.score >= minPoseConfidence) {
-      drawKeypoints(pose.keypoints, minPartConfidence, this.poseCanvans)
-      drawSkeleton(pose.keypoints, minPartConfidence, this.poseCanvans)
+  executeClassify(frame) {
+    if (this.classifier && this.classifier.isReady() && !this.data.predicting) {
+      this.setData({
+        predicting: true
+      }, () => {
+        this.classifier.detectSinglePose(frame).then((pose) => {
+          const nosePosition = pose.keypoints[0].position;
+          this.classifier.drawSinglePose(this.ctx, pose);
+          this.setData({
+            predicting: false,
+            nosePosition: Math.round(nosePosition.x) + ', ' + Math.round(nosePosition.y)
+          })
+        }).catch((err) => {
+          console.log(err, err.stack);
+        });
+      });
     }
-    this.poseCanvans.draw()
   },
 
   /**
@@ -116,7 +91,9 @@ Page({
    * 生命周期函数--监听页面卸载
    */
   onUnload: function () {
-
+    if (this.classifier && this.classifier.isReady()) {
+      this.classifier.dispose();
+    }
   },
 
   /**

@@ -13,7 +13,8 @@
   },
   "usingComponents": {
     "van-nav-bar": "@vant/weapp/nav-bar/index",
-    "van-icon": "@vant/weapp/icon/index"
+    "van-icon": "@vant/weapp/icon/index",
+    "van-toast": "@vant/weapp/toast/index"
   },
   "plugins": {
     "tfjsPlugin": {

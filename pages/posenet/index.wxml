@@ -4,3 +4,4 @@
     <cover-view class="cover-btn" bindtap="handleSwitchCamera">切换摄像头</cover-view>
   </canvas>
 </camera>
+<van-toast id="van-toast" />
