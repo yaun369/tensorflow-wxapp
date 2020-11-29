@@ -17,7 +17,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    console.log('benchmarkLevel', benchmarkLevel);
   },
 
   /**
@@ -30,7 +30,7 @@ Page({
     let count = 0;
     const listener = context.onCameraFrame(frame => {
       count++;
-      if (count === 4) {
+      if (count === 4) { // 控制帧数
         if (this.classifier && this.classifier.isReady()) {
           this.executeClassify(frame);
         }

@@ -21,7 +21,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    // console.log(appWidth, appHeight);
+    console.log('benchmarkLevel', benchmarkLevel);
   },
   onCameraError(err) {
     console.log('onCameraError>>', err);
@@ -30,11 +30,18 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady() {
-    const context = wx.createCameraContext();
+    const context = wx.createCameraContext(this);
     this.ctx = wx.createCanvasContext('pose', this);
     this.initClassifier();
-    const listener = context.onCameraFrame((frame) => {
-      this.executeClassify(frame);
+    let count = 0;
+    const listener = context.onCameraFrame(frame => {
+      count++;
+      if (count === 2) { // 控制帧数
+        if (this.classifier && this.classifier.isReady()) {
+          this.executeClassify(frame);
+        }
+        count = 0;
+      }
     });
     listener.start();
   },

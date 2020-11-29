@@ -27,7 +27,10 @@ App({
       const res = wx.getSystemInfoSync();
       this.globalData.appWidth = typeof res.screenWidth === 'number' ? res.screenWidth : 320;
       this.globalData.appHeight = typeof res.screenHeight === 'number' ? res.screenHeight : 500;
-      this.globalData.benchmarkLevel = typeof res.benchmarkLevel === 'number' ? res.benchmark : -1;
+      this.globalData.benchmarkLevel = typeof res.benchmarkLevel === 'number' ? res.benchmarkLevel : -1;
+      wx.reportAnalytics('get_device_info', {
+        device_info: JSON.stringify(res)
+      });
     } catch (e) {
       console.log(e);
     }
