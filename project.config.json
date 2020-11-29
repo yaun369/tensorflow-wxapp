@@ -4,7 +4,7 @@
     "ignore": []
   },
   "setting": {
-    "urlCheck": false,
+    "urlCheck": true,
     "es6": false,
     "enhance": true,
     "postcss": true,
@@ -43,7 +43,7 @@
   },
   "compileType": "miniprogram",
   "libVersion": "2.7.4",
-  "appid": "wx72c58ac53c5646b3",
+  "appid": "wx85cb68c407c84cc0",
   "projectname": "posenet-wxapp",
   "debugOptions": {
     "hidedInDevtools": []

@@ -2,6 +2,7 @@
 var fetchWechat = require('fetch-wechat');
 var tf = require('@tensorflow/tfjs-core');
 var webgl = require('@tensorflow/tfjs-backend-webgl');
+var cpu = require('@tensorflow/tfjs-backend-cpu');
 var plugin = requirePlugin('tfjsPlugin');
 App({
   onLaunch: function () {
@@ -14,6 +15,8 @@ App({
       tf,
       // inject webgl backend
       webgl,
+      // inject cpu backend
+      cpu,
       // provide webgl canvas
       canvas: wx.createOffscreenCanvas()
     });
