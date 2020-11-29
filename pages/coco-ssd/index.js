@@ -30,7 +30,7 @@ Page({
     let count = 0;
     const listener = context.onCameraFrame(frame => {
       count++;
-      if (count === 4) { // 控制帧数
+      if (count === 2) { // 控制帧数
         if (this.classifier && this.classifier.isReady()) {
           this.executeClassify(frame);
         }
