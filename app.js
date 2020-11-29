@@ -21,7 +21,6 @@ App({
   },
   getDeviceInfo() {
     try {
-      let custom = wx.getMenuButtonBoundingClientRect();
       const res = wx.getSystemInfoSync();
       this.globalData.appWidth = typeof res.screenWidth === 'number' ? res.screenWidth : 320;
       this.globalData.appHeight = typeof res.screenHeight === 'number' ? res.screenHeight : 500;

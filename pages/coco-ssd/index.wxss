@@ -4,7 +4,7 @@
   height: 100vh;
 }
 
-.pose-canvas {
+.canvas {
   width: 100%;
   height: 100vh;
 }

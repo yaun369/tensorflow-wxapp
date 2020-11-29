@@ -3,3 +3,4 @@
 <camera class="camera" device-position="back" flash="off" frame-size="medium">
   <canvas class="canvas" canvas-id="ssd"></canvas>
 </camera>
+<van-toast id="van-toast" />
