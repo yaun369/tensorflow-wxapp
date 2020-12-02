@@ -10,4 +10,17 @@
 
 * 首先需要在小程序后台添加`TensorFlow.js`插件，[参考此文档。](https://mp.weixin.qq.com/wxopen/plugindevdoc?appid=wx6afed118d9e81df9&token=378013697&lang=zh_CN)
 
-* 添加成功后就可以在开发者工具里运行本项目。
+* 在项目根目录下安装项目需要用到的`npm`包，使用`yarn`或者`npm`都可。
+
+```bash
+yarn install
+```
+
+* 注意：安装好`npm`包后一定有在开发者工具里**构建`npm`**。可以参考微信官方文档，[在小程序中使用npm](https://developers.weixin.qq.com/miniprogram/dev/devtools/npm.html)。
+
+* 修改根目录下的`env.js.example`文件，把其中的模型地址替换成你的模型地址。
+
+## 线上版本
+
+微信搜索：**TensorFlow机器学习模型**。或者扫码：
+![TensorFlow机器学习模型](https://star-1257061493.cos.ap-beijing.myqcloud.com/tensorflow/qrcode.jpg)
