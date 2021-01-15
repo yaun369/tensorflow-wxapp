@@ -1,0 +1,16 @@
+/* pages/recorder/index.wxss */
+
+.button {
+  position: fixed;
+  bottom: 40rpx;
+  left: 40rpx;
+  width: 670rpx;
+  height: 100rpx;
+  background: #ff6f00;
+  border-radius: 12rpx;
+  font-size: 32rpx;
+  font-weight: 500;
+  color: #FFFFFF;
+  line-height: 100rpx;
+  text-align: center;
+}

@@ -2,7 +2,8 @@
   "pages": [
     "pages/index/index",
     "pages/posenet/index",
-    "pages/coco-ssd/index"
+    "pages/coco-ssd/index",
+    "pages/recorder/index"
   ],
   "window": {
     "backgroundTextStyle": "light",

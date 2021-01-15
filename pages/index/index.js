@@ -15,6 +15,11 @@ Page({
       logo: '/static/img/coco-ssd.png',
       title: '对象检测',
       desc: '定位和识别单个图像中的多个对象 (Coco SSD)。'
+    }, {
+      url: '/pages/recorder/index',
+      logo: '/static/img/recorder.png',
+      title: '实时解析声音',
+        desc: '利用小程序录音API，实时解析PCM格式的声音，并转换成音量大小的百分比。这个转换结果并不是具体分贝。'
     }]
   },
 
