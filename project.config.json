@@ -45,7 +45,7 @@
     "minifyWXSS": true
   },
   "compileType": "miniprogram",
-  "libVersion": "2.7.4",
+  "libVersion": "2.9.0",
   "appid": "wx85cb68c407c84cc0",
   "projectname": "tensorflow-wxapp",
   "debugOptions": {
@@ -55,18 +55,23 @@
   "simulatorType": "wechat",
   "simulatorPluginLibVersion": {},
   "condition": {
-    "search": {
-      "list": []
-    },
-    "conversation": {
+    "plugin": {
       "list": []
     },
     "game": {
-      "currentL": -1,
+      "list": []
+    },
+    "gamePlugin": {
       "list": []
     },
     "miniprogram": {
-      "list": []
+      "list": [
+        {
+          "name": "pages/recorder/index",
+          "pathName": "pages/recorder/index",
+          "scene": null
+        }
+      ]
     }
   }
 }

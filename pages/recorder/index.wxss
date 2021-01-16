@@ -1,4 +1,16 @@
 /* pages/recorder/index.wxss */
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+.result {
+  width: 100%;
+  height: 50%;
+}
 
 .button {
   position: fixed;
