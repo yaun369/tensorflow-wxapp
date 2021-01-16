@@ -65,13 +65,7 @@
       "list": []
     },
     "miniprogram": {
-      "list": [
-        {
-          "name": "pages/recorder/index",
-          "pathName": "pages/recorder/index",
-          "scene": null
-        }
-      ]
+      "list": []
     }
   }
 }
