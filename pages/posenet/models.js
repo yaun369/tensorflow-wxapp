@@ -55,7 +55,13 @@ export class Classifier {
   detectSinglePose(frame) {
     return new Promise((resolve, reject) => {
       const video = tf.tidy(() => {
-        const temp = tf.tensor(new Uint8Array(frame.data), [frame.height, frame.width, 4])
+        // const temp = tf.tensor(new Uint8Array(frame.data), [frame.height, frame.width, 4])
+        const imgData = {
+          data: new Uint8Array(frame.data),
+          width: frame.width,
+          height: frame.height
+        }
+        const temp = tf.browser.fromPixels(imgData, 4)
         const sliceOptions = getFrameSliceOptions(frame.width, frame.height, this.displaySize.width, this.displaySize.height)
         return temp.slice(sliceOptions.start, sliceOptions.size).resizeBilinear([this.displaySize.height, this.displaySize.width])
       })
